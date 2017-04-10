@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Soccer.Views; assembly=Soccer"
+                  x:Class="Soccer.Views.MasterView"
+                  BackgroundColor="{StaticResource MainColor}">
+
+    <MasterDetailPage.Master>
+        <views:MenuView></views:MenuView>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage x:Name="Navigator">
+            <x:Arguments>
+                <views:HomeView></views:HomeView>
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+    
+</MasterDetailPage>

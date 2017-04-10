@@ -10,11 +10,15 @@ namespace Soccer
 {
     public partial class App : Application
     {
+        #region Properties
+        public static NavigationPage Navigator { get; internal set; } 
+        #endregion
+
         public App()
         {
             InitializeComponent();
 
-            MainPage = new LoginView();
+            MainPage = new MasterView();
         }
 
         protected override void OnStart()
