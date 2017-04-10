@@ -8,11 +8,62 @@
 
     <ScrollView BindingContext="{Binding Login}">
         <StackLayout  Spacing="10" Padding="10">
-            <Image Source="soccer2.jpg"></Image>
+            <Image Source="soccer_logo.png"></Image>
             <Label Text="Login." FontSize="Large" FontAttributes="Bold" TextColor="{StaticResource BackgrountColor}" 
                    HorizontalOptions="Center" 
                   VerticalOptions="Center">
             </Label>
+
+            <!--<Grid
+                Padding="30,0,30,0">
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        Text="Email"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        TextColor="{StaticResource BackgrountColor}">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Text="{Binding Email}"
+                        Placeholder="Enter an email..."
+                        Keyboard="Email"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center"
+                        BackgroundColor="{StaticResource BackgrountColor}">
+                    </Entry>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        Text="Password"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        TextColor="{StaticResource BackgrountColor}">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Text="{Binding Password}"
+                        Placeholder="Enter a password..."
+                        IsPassword="True"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center"
+                        BackgroundColor="{StaticResource BackgrountColor}">
+                    </Entry>
+                </Grid>
+            </Grid>-->  
+            
             <StackLayout Padding="30, 0,30,0" Orientation="Vertical">
                 <Label Text="Email" 
                        FontAttributes="Bold" 
@@ -46,16 +97,18 @@
                        HorizontalOptions="Start"
                        VerticalOptions="Center"
                        TextColor="{StaticResource BackgrountColor}">                         
-                </Label>
-                <ActivityIndicator IsRunning="{Binding IsRunning}}"></ActivityIndicator>
+                </Label>                      
             </StackLayout>
+
+            <ActivityIndicator IsRunning="{Binding IsRunning}}"></ActivityIndicator>
+
             <StackLayout Padding="30, 0,30,0" Orientation="Vertical">
                 <Button VerticalOptions="Center" HorizontalOptions="FillAndExpand" BackgroundColor="Orange" Text="Login." 
-                        Command="{Binding LoginCommand}"></Button>
+                        Command="{Binding LoginCommand}" IsEnabled="{Binding IsEnabled}"></Button>
                 <Button VerticalOptions="Center" HorizontalOptions="FillAndExpand" BackgroundColor="Navy" Text="Login With Facebook."
-                        Command="{Binding LoginWithFacebookCommand}"></Button>
+                        Command="{Binding LoginWithFacebookCommand}" IsEnabled="{Binding IsEnabled}"></Button>
                 <Button VerticalOptions="Center" HorizontalOptions="FillAndExpand" BackgroundColor="Purple" Text="RegisterNew User."
-                        Command="{Binding RegiterCommand}"></Button>
+                        Command="{Binding RegiterCommand}" IsEnabled="{Binding IsEnabled}"></Button>
             </StackLayout>
             <Label Text="Forgot your Password?" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" 
                    TextColor="{StaticResource BackgrountColor}">
