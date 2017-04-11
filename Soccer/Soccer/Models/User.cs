@@ -19,5 +19,25 @@ namespace Soccer.Models
         public int Points { get; set; }
         public Team FavoriteTeam { get; set; }
         public UserType UserType { get; set; }
+        public string FullName
+        {
+            get
+            {
+                return $"{FirstName}{LastName}";
+            }
+        }
+
+        public string FullPicture
+        {
+            get
+            {
+                if(string.IsNullOrEmpty(Picture))
+                {
+                    return "avatar_user.png";
+                }
+
+                return $"http://soccerbackend55.azurewebsites.net{Picture.Substring(1)}";
+            }
+        }
     }
 }

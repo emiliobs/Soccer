@@ -18,7 +18,7 @@ namespace Soccer
         {
             InitializeComponent();
 
-            MainPage = new MasterView();
+            MainPage = new LoginView();
         }
 
         protected override void OnStart()

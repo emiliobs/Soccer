@@ -19,6 +19,7 @@ namespace Soccer.ViewModels
 
         private ApiService apiService;
         private DialogService dialogService;
+        private NavigationService navigationservice;
         private string email;
         private string password;
         private bool isRunning;
@@ -96,6 +97,7 @@ namespace Soccer.ViewModels
         {
             apiService = new ApiService();
             dialogService = new DialogService();
+            navigationservice = new NavigationService();
 
             IsEnable = true;
             IsRemembered = true;
@@ -185,13 +187,23 @@ namespace Soccer.ViewModels
                 return;
             }
 
+            //lo igualo a nulo para no perder el placehoder
+            Email = null;
+            password = null;
+
             IsRunning = true;
             IsEnable = false;
             var user = (User)response.Result;
-            await dialogService.ShowMessage("All, OK.", $"Welcome: {user.FirstName} {user.LastName}, Alias: {user.NickName}");
+            //await dialogService.ShowMessage("All, OK.", $"Welcome: {user.FirstName} {user.LastName}, Alias: {user.NickName}");
+            //IsRunning = false;
+            //IsEnable = true;
+
+            //aqui llamo al singleton:
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.CurrentUser = user;
+            navigationservice.SetMainPage("MasterView");
             IsRunning = false;
             IsEnable = true;
-
         }
 
         #endregion

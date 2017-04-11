@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Soccer.Models;
+using System;
 using System.Collections.ObjectModel;
 
 namespace Soccer.ViewModels
@@ -7,22 +8,44 @@ namespace Soccer.ViewModels
     {
         #region Atributtes
         public LoginViewModel Login { get; set; }
+        
+
         #endregion
 
         #region Properties
         public ObservableCollection<MenuItemViewModel> Menu { get; set; }
+        public User CurrentUser { get; set; }
         #endregion
-
-
+        
         #region Constructor
         public MainViewModel()
         {
             Login = new LoginViewModel();
             // Menu = new ObservableCollection<MenuItemViewModel>();
 
+            //singleton:
+            instance = this;
+
+
             LoadMenu();
         }
         #endregion
+
+        #region Singlenton
+
+        private static MainViewModel instance;
+        public static  MainViewModel GetInstance()
+        {
+
+            if (instance == null)
+            {
+                instance = new MainViewModel();
+            }
+
+            return instance;
+        }
+        #endregion
+
         #region Methods
         private void LoadMenu()
         {
