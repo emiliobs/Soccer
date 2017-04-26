@@ -20,6 +20,7 @@ namespace Soccer.ViewModels
         private ApiService apiService;
         private DialogService dialogService;
         private NavigationService navigationservice;
+        private DataService dataservice;
         private string email;
         private string password;
         private bool isRunning;
@@ -98,6 +99,7 @@ namespace Soccer.ViewModels
             apiService = new ApiService();
             dialogService = new DialogService();
             navigationservice = new NavigationService();
+            dataservice = new DataService();
 
             IsEnable = true;
             IsRemembered = true;
@@ -147,8 +149,10 @@ namespace Soccer.ViewModels
                 return;
             }
 
+
+            var parameter = dataservice.First<Parameter>(false);
             //Aqui ya consumo el servicio con token para que el user se valido:
-            var token = await apiService.GetToken("http://soccerapi55.azurewebsites.net/", Email, Password);
+            var token = await apiService.GetToken(parameter.URLBase, Email, Password);
 
             //aqui el llega nulo
             if (token == null)
@@ -175,7 +179,7 @@ namespace Soccer.ViewModels
 
             //http://soccerapi55.azurewebsites.net/api/Users/GetUserByEmail
             //Si llego aqui, ya tengo token positivo, piso ya el usuario:
-            var response = await apiService.GetUserByEmail("http://soccerapi55.azurewebsites.net", "/api", "/Users/GetUserByEmail", token.TokenType, token.AccessToken, token.UserName);
+            var response = await apiService.GetUserByEmail(parameter.URLBase, "/api", "/Users/GetUserByEmail", token.TokenType, token.AccessToken, token.UserName);
 
             //Aqui valido que token se apositivo, es casi imposible que se lo contrario,ya en esta pila:
             if (!response.IsSuccess)
