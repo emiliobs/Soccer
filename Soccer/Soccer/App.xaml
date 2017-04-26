@@ -15,6 +15,8 @@
 
             <!--locator-->
             <infra:IntanceLocator x:Key="Locator"></infra:IntanceLocator>
+            <!--Parameter-->
+            <x:String x:Key="URLBase">http://soccerapi55.azurewebsites.net/</x:String>
 
         </ResourceDictionary>
         
